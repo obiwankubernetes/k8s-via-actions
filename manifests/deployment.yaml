@@ -1,0 +1,17 @@
+# deploy container image from acr under app name hell0-world
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "hello-world"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "hello-world"
+    spec:
+      containers:
+        - name: "hello-world"
+          image: "<acrname>.azurecr.io/<containerimagename>"
+          ports:
+          - containerPort: 1337
